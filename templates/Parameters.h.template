@@ -84,6 +84,15 @@ $test_limits
   ROS_DEBUG_STREAM(*this);
   }
 
+  std::string getNamespace(){
+    return privateNamespace;
+  }
+  
+  void setNamespace(std::string namespaceName){
+    privateNamespace=namespaceName+ "/";
+  }
+ 
+
   void fromConfig(const Config& config, const uint32_t level = 0){
 #ifdef DYNAMIC_RECONFIGURE_FOUND
 $fromConfig
@@ -181,9 +190,9 @@ $non_default_params    );
   $parameters
 
   private:
-    const std::string globalNamespace;
-    const std::string privateNamespace;
-    const std::string nodeName;
+    std::string globalNamespace;
+    std::string privateNamespace;
+    std::string nodeName;
 };
 
 } // namespace ${pkgname}
